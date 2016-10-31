@@ -1,0 +1,2 @@
+class CharacterNote < ApplicationRecord
+end
