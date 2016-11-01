@@ -1,0 +1,9 @@
+- current_user.characters.each do |char|
+  ul
+    li= char.name
+    br
+    li= "Guild name: #{char.guild_title}"
+    li= "Game name: #{char.game.title}"
+    li= char.description
+
+= render partial: '/characters/new'

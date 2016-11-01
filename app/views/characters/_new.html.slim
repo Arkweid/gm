@@ -1,0 +1,13 @@
+= form_for Character.new do |f|
+  p
+    = f.label :title
+    = f.select :game_id, Game.all.collect { |p| [ p.title, p.id ] }, include_blank: true
+  p
+    = f.label :name
+    = f.text_field :name
+
+  p
+    = f.label :description
+    = f.text_area :description
+
+  p= f.submit 'Create'
