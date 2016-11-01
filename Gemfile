@@ -19,6 +19,7 @@ gem 'devise-bootstrap-views'
 gem 'slim-rails'
 
 group :development, :test do
+  gem 'rspec-rails'
   gem 'byebug', platform: :mri
   gem 'faker'
 end
