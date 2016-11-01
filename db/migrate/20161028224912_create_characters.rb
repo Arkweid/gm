@@ -1,8 +1,8 @@
 class CreateCharacters < ActiveRecord::Migration[5.0]
   def change
     create_table :characters do |t|
-      t.integer :user_id
-      t.integer :game_id
+      t.belongs_to :user, foreign_key: true
+      t.belongs_to :game, foreign_key: true
       t.integer :guild_id
 
       t.string :name
@@ -11,5 +11,7 @@ class CreateCharacters < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+
+    add_index :characters, [:user_id, :game_id]
   end
 end

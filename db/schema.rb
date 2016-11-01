@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20161031194926) do
     t.boolean  "privacy"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["character_id", "user_id"], name: "index_character_notes_on_character_id_and_user_id", using: :btree
+    t.index ["character_id"], name: "index_character_notes_on_character_id", using: :btree
+    t.index ["user_id"], name: "index_character_notes_on_user_id", using: :btree
   end
 
   create_table "characters", force: :cascade do |t|
@@ -33,12 +36,16 @@ ActiveRecord::Schema.define(version: 20161031194926) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["game_id"], name: "index_characters_on_game_id", using: :btree
+    t.index ["user_id", "game_id"], name: "index_characters_on_user_id_and_game_id", using: :btree
+    t.index ["user_id"], name: "index_characters_on_user_id", using: :btree
   end
 
   create_table "games", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_games_on_title", using: :btree
   end
 
   create_table "guilds", force: :cascade do |t|
@@ -47,6 +54,9 @@ ActiveRecord::Schema.define(version: 20161031194926) do
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_guilds_on_game_id", using: :btree
+    t.index ["user_id", "game_id"], name: "index_guilds_on_user_id_and_game_id", using: :btree
+    t.index ["user_id"], name: "index_guilds_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,4 +76,10 @@ ActiveRecord::Schema.define(version: 20161031194926) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "character_notes", "characters"
+  add_foreign_key "character_notes", "users"
+  add_foreign_key "characters", "games"
+  add_foreign_key "characters", "users"
+  add_foreign_key "guilds", "games"
+  add_foreign_key "guilds", "users"
 end
