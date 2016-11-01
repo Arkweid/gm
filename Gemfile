@@ -20,6 +20,7 @@ gem 'slim-rails'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'fuubar'
   gem 'byebug', platform: :mri
   gem 'faker'
 end
