@@ -1,10 +1,14 @@
-development: &default
+
+default: &default
   adapter: postgresql
   encoding: unicode
-  database: guild_master_development
   pool: 5
-  username: railrunner
-  password:
+  username: arkweid
+  password: qwertyror
+
+development:
+  <<: *default
+  database: guild_master_development
 
 test:
   <<: *default
