@@ -4,8 +4,8 @@ class CreateCharacterNotes < ActiveRecord::Migration[5.0]
       t.belongs_to :character, foreign_key: true
       t.belongs_to :user, foreign_key: true
 
-      t.text :note
-      t.boolean :privacy
+      t.text :note, null: false
+      t.boolean :privacy, default: false
 
       t.timestamps
     end

@@ -5,9 +5,9 @@ class CreateCharacters < ActiveRecord::Migration[5.0]
       t.belongs_to :game, foreign_key: true
       t.integer :guild_id
 
-      t.string :name
-      t.integer :guild_rank
-      t.text :description
+      t.string :name, null: false
+      t.integer :guild_rank, default: 0
+      t.text :description, default: ''
 
       t.timestamps
     end

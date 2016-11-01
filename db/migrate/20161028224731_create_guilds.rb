@@ -3,11 +3,11 @@ class CreateGuilds < ActiveRecord::Migration[5.0]
     create_table :guilds do |t|
       t.belongs_to :user, foreign_key: true
       t.belongs_to :game, foreign_key: true
-      t.string :title
+      t.string :title, unique: true, null: false
 
       t.timestamps
     end
 
-    add_index :guilds, [:user_id, :game_id]
+    add_index :guilds, :title
   end
 end
