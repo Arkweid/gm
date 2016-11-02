@@ -15,3 +15,9 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+
+$ ->
+  $('body').on 'click', 'a.edit-char-link', (e) ->
+    e.preventDefault();
+    char_id = $(this).data('charId')
+    $('form#edit-char-' + char_id).toggle()
