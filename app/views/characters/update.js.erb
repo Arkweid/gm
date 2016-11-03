@@ -1,0 +1,8 @@
+<% if @character.errors.present? %>
+  <% @character.errors.full_messages.each do |message| %>
+    $('#char-<%= @answer.id %>-errors').html('<%= j message %>');
+  <% end %>
+<% else %>
+  $('.character_index').html('<%= j render partial: 'characters/index' %>');  
+<% end %>
+//must be as replace exemplar, not render all

@@ -1,15 +1,17 @@
-= link_to 'New Character', '', class: 'new-char-link'
+.character_new
+  = link_to 'New Character', '', class: 'new-char-link'
 
-= form_for Character.new, html: { class: "collapse", id: "new-char-form" } do |f|
-  p
-    = f.label :title
-    = f.select :game_id, Game.all.collect { |p| [ p.title, p.id ] }, include_blank: true
-  p
-    = f.label :name
-    = f.text_field :name
+  .new_character_errors
 
-  p
-    = f.label :description
-    = f.text_area :description
+  = form_for Character.new, remote: true, html: { class: "collapse", id: "new-char-form" } do |f|
+    p
+      = f.label :title
+      = f.select :game_id, Game.all.collect { |p| [ p.title, p.id ] }, include_blank: true
+    p
+      = f.label :name
+      = f.text_field :name
+    p
+      = f.label :description
+      = f.text_area :description
 
-  p= f.submit 'Create'
+    p= f.submit 'Create'
