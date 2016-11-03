@@ -1,24 +1,26 @@
 .character_index
   - current_user.characters.each do |char|
-    div[id="char-#{char.id}-errors"]
-    h3= char.name
-    ul
-      li= "Guild name: #{char.guild_title}"
-      li= "Game name: #{char.game.title}"
-      - unless char.description.blank?
-        li= char.description
+    - if char.persisted?
+      .alert-warning
+        div[id="char-#{char.id}-errors"]
+      h3= char.name
+      ul
+        li= "Guild name: #{char.guild_title}"
+        li= "Game name: #{char.game.title}"
+        - unless char.description.blank?
+          li= char.description
 
-      = link_to 'Edit', '', class: 'edit-char-link', data: { char_id: char.id }
-      p
-      = link_to 'Delete', character_path(char), method: :delete, remote: true, class: 'delete-char-link', data: { confirm: 'Are you sure?'}
+        = link_to 'Edit', 'javascript:void(0)', class: 'edit-char-link', data: { char_id: char.id }
+        p
+        = link_to 'Delete', character_path(char), method: :delete, remote: true, class: 'delete-char-link', data: { confirm: 'Are you sure?'}
 
 
-    ul
-      = form_for char, remote: true, html: { class: "collapse", id: "edit-char-#{char.id}" } do |f|
-        li= f.label :name, 'Character'
-        li= f.text_area :name
-        li= f.select :game_id, Game.all.collect { |p| [ p.title, p.id ] }, include_blank: true
-        li= f.label :description
-        li= f.text_area :description
+      ul
+        = form_for char, remote: true, html: { class: "collapse", id: "edit-char-#{char.id}" } do |f|
+          li= f.label :name, 'Character'
+          li= f.text_area :name
+          li= f.select :game_id, Game.all.collect { |p| [ p.title, p.id ] }, include_blank: true
+          li= f.label :description
+          li= f.text_area :description
 
-        li= f.submit 'Update'
+          li= f.submit 'Update'

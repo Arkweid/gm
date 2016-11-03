@@ -4,11 +4,9 @@
 
 $ ->
   $('body').on 'click', 'a.edit-char-link', (e) ->
-    e.preventDefault();
-    char_id = $(this).data('charId')
-    $('form#edit-char-' + char_id).toggle()
+    charId = $(this).data('charId')
+    $('form#edit-char-' + charId).toggle()
 
 $ ->
   $('body').on 'click', 'a.new-char-link', (e) ->
-    e.preventDefault();
     $('form#new-char-form').toggle()
