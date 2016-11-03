@@ -7,3 +7,8 @@ $ ->
     e.preventDefault();
     char_id = $(this).data('charId')
     $('form#edit-char-' + char_id).toggle()
+
+$ ->
+  $('body').on 'click', 'a.new-char-link', (e) ->
+    e.preventDefault();
+    $('form#new-char-form').toggle()

@@ -1,14 +1,13 @@
 - current_user.characters.each do |char|
+  h3= char.name
   ul
-    li= char.name
-    br
     li= "Guild name: #{char.guild_title}"
     li= "Game name: #{char.game.title}"
     li= char.description
     = link_to 'Edit', '', class: 'edit-char-link', data: { char_id: char.id }
 
   ul
-    = form_for char, remote: true, html: { class: "hidden", id: "edit-char-#{char.id}"} do |f|
+    = form_for char, remote: true, html: { class: "collapse", id: "edit-char-#{char.id}" } do |f|
       li= f.label :name, 'Character'
       li= f.text_area :name
       li= f.select :game_id, Game.all.collect { |p| [ p.title, p.id ] }, include_blank: true

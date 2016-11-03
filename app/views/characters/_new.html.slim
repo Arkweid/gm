@@ -1,4 +1,6 @@
-= form_for Character.new do |f|
+= link_to 'New Character', '', class: 'new-char-link'
+
+= form_for Character.new, html: { class: "collapse", id: "new-char-form" } do |f|
   p
     = f.label :title
     = f.select :game_id, Game.all.collect { |p| [ p.title, p.id ] }, include_blank: true
