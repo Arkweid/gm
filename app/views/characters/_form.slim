@@ -1,0 +1,18 @@
+.row
+  = form_for [user, character], html: { class: 'form-horizontal' } do |f|
+    .form-group
+      = f.label :game_id, class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.select :game_id, options_from_collection_for_select(Game.all, :id, :title, character.game_id), {}, { class: 'form-control' }
+    .form-group
+        = f.label :name, class: 'col-sm-2 control-label'
+        .col-sm-10
+          = f.text_field :name, class: 'form-control'
+    .form-group
+        = f.label :description, class: 'col-sm-2 control-label'
+        .col-sm-10
+          = f.text_area :description, class: 'form-control'
+
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        = f.submit 'Update', class: 'btn btn-success'

@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   root 'welcom#index'
 
-  resources :characters
+  resources :users do
+    resources :characters
+  end
 end

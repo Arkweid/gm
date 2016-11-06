@@ -1,0 +1,14 @@
+.row
+  - current_user.characters.each do |char|
+    .col-xs-12.col-md-3
+      div.panel.panel-default
+        .panel-heading
+          = char.name
+        .panel-body
+          ul
+            li= char.game.title
+            li= char.guild_title
+          hr
+          = link_to 'Edit', edit_user_character_path(char, user_id: current_user), class: 'btn btn-primary', data: { char_id: char.id }
+          | &nbsp;
+          = link_to 'Delete', user_character_path(char, user_id: current_user), method: :delete, remote: true, class: 'btn btn-danger', data: { confirm: 'Are you sure?'}

@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :load_character, only: [:update, :destroy]
+  before_action :load_character, only: [:update, :destroy, :edit]
 
   respond_to :js
 
