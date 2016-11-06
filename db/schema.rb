@@ -18,35 +18,45 @@ ActiveRecord::Schema.define(version: 20161031194926) do
   create_table "character_notes", force: :cascade do |t|
     t.integer  "character_id"
     t.integer  "user_id"
-    t.text     "note"
-    t.boolean  "privacy"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.text     "note",                         null: false
+    t.boolean  "privacy",      default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["character_id", "user_id"], name: "index_character_notes_on_character_id_and_user_id", using: :btree
+    t.index ["character_id"], name: "index_character_notes_on_character_id", using: :btree
+    t.index ["user_id"], name: "index_character_notes_on_user_id", using: :btree
   end
 
   create_table "characters", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "game_id"
     t.integer  "guild_id"
-    t.string   "name"
-    t.integer  "guild_rank"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "name",                     null: false
+    t.integer  "guild_rank",  default: 0
+    t.text     "description", default: ""
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["game_id"], name: "index_characters_on_game_id", using: :btree
+    t.index ["user_id", "game_id"], name: "index_characters_on_user_id_and_game_id", using: :btree
+    t.index ["user_id"], name: "index_characters_on_user_id", using: :btree
   end
 
   create_table "games", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_games_on_title", using: :btree
   end
 
   create_table "guilds", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "game_id"
-    t.string   "title"
+    t.string   "title",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_guilds_on_game_id", using: :btree
+    t.index ["title"], name: "index_guilds_on_title", using: :btree
+    t.index ["user_id"], name: "index_guilds_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,4 +76,10 @@ ActiveRecord::Schema.define(version: 20161031194926) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "character_notes", "characters"
+  add_foreign_key "character_notes", "users"
+  add_foreign_key "characters", "games"
+  add_foreign_key "characters", "users"
+  add_foreign_key "guilds", "games"
+  add_foreign_key "guilds", "users"
 end

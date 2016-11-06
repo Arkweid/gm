@@ -1,0 +1,17 @@
+.character_new
+  = link_to 'New Character', 'javascript:void(0)', class: 'new-char-link'
+
+  .new_character_errors.alert-warning
+
+  = form_for current_user.characters.build, remote: true, html: { class: "collapse", id: "new-char-form" } do |f|
+    p
+      = f.label :title
+      = f.select :game_id, Game.all.collect { |p| [ p.title, p.id ] }, include_blank: true
+    p
+      = f.label :name
+      = f.text_field :name
+    p
+      = f.label :description
+      = f.text_area :description
+
+    p= f.submit 'Create'
