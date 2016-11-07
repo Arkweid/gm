@@ -1,1 +1,4 @@
 h1 Hello! Welcom to GuildMaster!
+- if user_signed_in?
+  p = link_to 'Characters', user_characters_path(user_id: current_user.id)
+  p = link_to 'Guilds', user_guilds_path(user_id: current_user.id)
