@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'pg'
 gem 'devise'
+gem "pundit"
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise-bootstrap-views'

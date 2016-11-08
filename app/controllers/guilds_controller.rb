@@ -7,11 +7,12 @@ class GuildsController < ApplicationController
   end
 
   def new
-    @guild = Guild.new
+    @guild = authorize Guild.new
   end
 
   def create
-    @guild = Guild.create(guild_params.merge(user: current_user))
+    @guild = authorize Guild.new(guild_params.merge(user: current_user))
+    @guild.save
 
     redirect_to action: :index
   end
