@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   get '/search', to: 'search#index'
 
   resources :users do
-    resources :characters
+    resources :characters do
+      resources :invites
+    end
+
     resources :guilds
   end
 end

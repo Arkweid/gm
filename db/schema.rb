@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161108063231) do
+ActiveRecord::Schema.define(version: 20161109115423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,17 @@ ActiveRecord::Schema.define(version: 20161108063231) do
     t.index ["user_id"], name: "index_guilds_on_user_id", using: :btree
   end
 
+  create_table "invites", force: :cascade do |t|
+    t.integer  "character_id"
+    t.integer  "guild_id"
+    t.string   "state",        default: "suspense"
+    t.text     "description",  default: ""
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.index ["character_id"], name: "index_invites_on_character_id", using: :btree
+    t.index ["guild_id"], name: "index_invites_on_guild_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -85,4 +96,6 @@ ActiveRecord::Schema.define(version: 20161108063231) do
   add_foreign_key "characters", "users"
   add_foreign_key "guilds", "games"
   add_foreign_key "guilds", "users"
+  add_foreign_key "invites", "characters"
+  add_foreign_key "invites", "guilds"
 end
