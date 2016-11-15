@@ -6,14 +6,17 @@ class CharactersController < ApplicationController
 
   def create
     @character = Character.create(character_params.merge(user: current_user))
+    redirect_to user_characters_url(current_user)
   end
 
   def update
     @character.update(character_params)
+    redirect_to user_characters_url(current_user), notice: 'Characer updated'
   end
 
   def destroy
     @character.destroy
+    redirect_to :back
   end
 
   private

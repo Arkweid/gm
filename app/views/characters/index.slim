@@ -12,3 +12,11 @@
           = link_to 'Edit', edit_user_character_path(char, user_id: current_user), class: 'btn btn-primary', data: { char_id: char.id }
           | &nbsp;
           = link_to 'Delete', user_character_path(char, user_id: current_user), method: :delete, remote: true, class: 'btn btn-danger', data: { confirm: 'Are you sure?'}
+  
+  .col-xs-12.col-md-3
+    = link_to new_user_character_url(current_user) do
+      div.panel.panel-default
+        .panel-heading
+          | New character
+        .panel-body
+          | +
