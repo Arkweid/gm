@@ -1,7 +1,7 @@
 class GuildsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_guild, only: [:update, :destroy, :edit, :show]
-  before_action :load_games, only: [:index, :edit, :new]  
+  before_action :load_games, only: [:index, :edit, :new]
 
   def index
     @guilds = current_user.guilds

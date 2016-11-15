@@ -34,6 +34,6 @@ RSpec.describe GuildsController, type: :controller do
         expect { post :create, params: { user_id: @user.id, guild: attributes_for(:invalid_guild) } }
           .to_not change(@user.guilds, :count)
       end
-    end    
+    end
   end
 end

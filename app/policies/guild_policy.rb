@@ -4,6 +4,6 @@ class GuildPolicy < ApplicationPolicy
   end
 
   def create?
-    user.premium? or user.guilds.blank?
+    user.premium? || user.guilds.blank?
   end
 end
