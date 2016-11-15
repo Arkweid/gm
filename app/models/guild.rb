@@ -6,5 +6,5 @@ class Guild < ApplicationRecord
 
   validates :user_id, :game_id, :title, presence: true
 
-  scope :search, ->(search) { where('title LIKE ?', "%#{search}%") }
+  scope :search_guild, ->(search) { where('title LIKE ?', "%#{search}%") }
 end
