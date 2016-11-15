@@ -13,6 +13,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'pg'
 gem 'devise'
+gem "pundit"
+gem 'state_machine'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise-bootstrap-views'
@@ -20,6 +22,7 @@ gem 'slim-rails'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'factory_girl_rails'  
   gem 'fuubar'
   gem 'byebug', platform: :mri
   gem 'faker'

@@ -1,0 +1,6 @@
+- if policy(guilds).create?
+  .col-xs-12.col-md-3
+    = link_to 'New Guild', new_user_guild_path(user_id: user), class: 'btn btn-primary'
+- else
+  .col-xs-12.col-md-3 data-toggle="tooltip" data-placement="right" title="You must be premium for more guilds"
+    = link_to 'New Guild', new_user_guild_path(user_id: user), class: 'btn btn-primary disabled'

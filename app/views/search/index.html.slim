@@ -1,0 +1,9 @@
+= form_tag("/search", method: "get") do
+  = label_tag(:q, "Guild:")
+  = text_field_tag(:q)
+  = submit_tag("Search")
+
+- unless @found.nil?
+  ul
+  - @found.each do |guild|
+    li= link_to guild.title, [guild.user, guild]
