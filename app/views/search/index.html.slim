@@ -4,6 +4,5 @@
   = submit_tag("Search")
 
 - unless @found.nil?
-  ul
-  - @found.each do |guild|
-    li= link_to guild.title, [guild.user, guild]
+  .row
+    = render partial: 'guilds_index', locals: { guilds: @found, user: current_user}  

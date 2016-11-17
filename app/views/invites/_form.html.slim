@@ -1,0 +1,14 @@
+.row
+  = form_for @invite, html: { class: 'form-horizontal' } do |f|
+    .form-group
+      = f.label 'Character', class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.select :character_id, options_from_collection_for_select(current_user.characters, :id, :name), {}, { class: 'form-control' }
+    .form-group
+        = f.label :description, class: 'col-sm-2 control-label'
+        .col-sm-10
+          = f.text_field :description, class: 'form-control'      
+
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        = f.submit 'Send invite', class: 'btn btn-success'

@@ -1,0 +1,13 @@
+- guilds.each do |guild|
+  .col-xs-12.col-md-3
+    div.panel.panel-default
+      .panel-heading.text-center
+        = guild.title
+      .panel-body
+        = image_tag guild.get_emblem_link, size: "100x100", class: 'center-block'
+      .panel-body
+        ul
+          li= guild.game.title
+          li= guild.description
+        hr
+        = link_to 'Join', user_characters_invites_new_path(user_id: current_user), class: 'btn btn-primary center-block'
