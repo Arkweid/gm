@@ -5,6 +5,8 @@
         .panel-heading
           = char.name
         .panel-body
+          = image_tag char.get_avatar_link, size: "100x100", class: 'center-block'          
+        .panel-body
           ul
             li= char.game.title
             li= char.guild_title

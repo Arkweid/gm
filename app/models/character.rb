@@ -9,4 +9,8 @@ class Character < ApplicationRecord
   def guild_title
     guild ? guild.title : 'Character doesn`t have guild'
   end
+
+  def get_avatar_link
+    avatar_link.blank? ? "character_default_avatar.png" : avatar_link
+  end
 end
