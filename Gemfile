@@ -13,8 +13,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'pg'
 gem 'devise'
-gem "pundit"
-gem 'state_machine'
+gem 'pundit'
+gem 'state_machines'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise-bootstrap-views'

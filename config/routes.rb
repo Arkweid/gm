@@ -5,13 +5,8 @@ Rails.application.routes.draw do
   get '/search', to: 'search#index'
 
   resources :users do
-    get '/characters/invites', to: 'invites#index'
-    get '/characters/invites/new', to: 'invites#new'    
-
-    resources :characters do
-      resources :invites
-    end
-
+    resources :characters
     resources :guilds
+    resources :invites
   end
 end

@@ -11,7 +11,7 @@ class Invite < ApplicationRecord
   # reject - отклонен
   # rejection - самоотвод
 
-  state_machine :state do
+  state_machine :state, :initial => :suspense do
     event :approval do
       transition :suspense => :approval
     end

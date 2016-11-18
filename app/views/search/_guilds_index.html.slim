@@ -8,6 +8,8 @@
       .panel-body
         ul
           li= guild.game.title
-          li= guild.description
-        hr
-        = link_to 'Join', user_characters_invites_new_path(user_id: current_user), class: 'btn btn-primary center-block'
+          p= guild.description
+
+        - if user_signed_in?
+          hr
+          = link_to 'Join', new_user_invite_path(user_id: current_user, guild_id: guild.id), class: 'btn btn-primary center-block'
