@@ -4,7 +4,7 @@ class GuildsController < ApplicationController
   before_action :load_games, only: [:index, :edit, :new]
 
   def index
-    @guilds = current_user.guilds
+    @guilds = current_user.guilds.decorate
   end
 
   def new

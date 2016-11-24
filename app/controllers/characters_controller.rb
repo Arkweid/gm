@@ -2,7 +2,9 @@ class CharactersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :load_character, only: [:update, :destroy, :edit]
 
-  respond_to :js
+  def index
+    @characters = current_user.characters.decorate
+  end
 
   def create
     @character = Character.create(character_params.merge(user: current_user))

@@ -19,6 +19,8 @@ gem 'state_machines-activerecord'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise-bootstrap-views'
 gem 'slim-rails'
+gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml' #for issue #697
+gem 'draper'
 
 group :development, :test do
   gem 'rspec-rails'
