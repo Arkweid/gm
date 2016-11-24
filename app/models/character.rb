@@ -11,6 +11,6 @@ class Character < ApplicationRecord
   end
 
   def get_avatar_link
-    avatar_link.blank? ? "character_default_avatar.png" : avatar_link
+    avatar_link.blank? ? 'character_default_avatar.png' : avatar_link
   end
 end

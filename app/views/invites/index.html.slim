@@ -1,0 +1,13 @@
+table.table
+  tr
+    th Character
+    th Guild
+    th Status
+    th
+
+  - @invites.each do |invite|
+    tr
+      th= invite.character.name
+      th= invite.guild.title
+      th= invite.state
+      th= link_to 'Reject', user_invite_path(invite, user_id: current_user), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?'}

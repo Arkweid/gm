@@ -65,10 +65,10 @@ ActiveRecord::Schema.define(version: 20161117080412) do
   create_table "invites", force: :cascade do |t|
     t.integer  "character_id"
     t.integer  "guild_id"
-    t.string   "state",        default: "suspense"
+    t.string   "state"
     t.text     "description",  default: ""
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.index ["character_id"], name: "index_invites_on_character_id", using: :btree
     t.index ["guild_id"], name: "index_invites_on_guild_id", using: :btree
   end

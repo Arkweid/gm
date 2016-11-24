@@ -1,7 +1,7 @@
 .row
   - current_user.characters.each do |char|
     .col-xs-12.col-md-3
-      div.panel.panel-default
+      .panel.panel-default
         .panel-heading
           = char.name
         .panel-body
@@ -17,7 +17,7 @@
   
   .col-xs-12.col-md-3
     = link_to new_user_character_url(current_user) do
-      div.panel.panel-default
+      .panel.panel-default
         .panel-heading
           | New character
         .panel-body

@@ -4,26 +4,20 @@ class Invite < ApplicationRecord
 
   validates :character_id, :guild_id, presence: true
 
-  # for state machine
-  # suspense - устанавливается по дефолту. Ожидает хоть какой-то реакции.
-  # approval - процесс рассмотрения инвайта. Голосуют и ругаются.
-  # accepted - принят
-  # reject - отклонен
-  # rejection - самоотвод
-
-  state_machine :state, :initial => :suspense do
+  state_machine initial: :suspense do
+    # инвайт принят гильдией на рассмотрение.
     event :approval do
-      transition :suspense => :approval
+      transition suspense: :approval
     end
-
+    # персонаж принят
     event :accepted do
-      transition :approval => :accepted
+      transition approval: :accepted
     end
-
+    # персонаж отклонен
     event :reject do
-      transition :approval => :reject
+      transition approval: :reject
     end
-
+    # самоотвод
     event :rejection do
       transition any => :rejection
     end

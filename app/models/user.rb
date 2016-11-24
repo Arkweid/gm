@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :characters, dependent: :destroy
   has_many :guilds, dependent: :destroy
   has_many :characters_notes, dependent: :destroy
+  has_many :invites, through: :characters
 end
