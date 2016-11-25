@@ -1,4 +1,4 @@
-class GuildDecorator < Draper::Decorator
+class GuildDecorator < Drape::Decorator
   delegate_all
 
   def take_emblem_link

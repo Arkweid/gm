@@ -3,6 +3,7 @@ class InvitesController < ApplicationController
   before_action :load_invite, only: [:destroy]
 
   def index
+    #policy only for youself
     @invites = current_user.invites
   end
 
@@ -11,12 +12,21 @@ class InvitesController < ApplicationController
   end
 
   def create
+    #policy only for youself
     @invite = Invite.create(invite_params)
     redirect_to user_invites_path(user_id: current_user.id)
   end
 
   def destroy
+    #policy only for admin
     @invite.destroy
+
+    redirect_to action: :index
+  end
+
+  def reject
+    #policy only for youself
+    @invite.rejection
 
     redirect_to action: :index
   end

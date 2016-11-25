@@ -1,4 +1,4 @@
-class CharacterDecorator < Draper::Decorator
+class CharacterDecorator < Drape::Decorator
   delegate_all
 
   def take_guild_title

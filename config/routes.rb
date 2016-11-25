@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :users do
     resources :characters
     resources :guilds
-    resources :invites
+    resources :invites do
+      post 'reject', on: :member
+    end
   end
 end
