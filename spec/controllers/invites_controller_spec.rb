@@ -4,7 +4,7 @@ RSpec.describe InvitesController, type: :controller do
   sign_in_user
 
   let(:guild) { create :guild, user: @user }
-  let(:character) { create :character, user: @user }  
+  let(:character) { create :character, user: @user }
 
   describe 'POST #create' do
     context 'invite with valid data' do
@@ -29,5 +29,5 @@ RSpec.describe InvitesController, type: :controller do
           .to change(@user.invites, :count).by(1)
       end
     end
-  end  
+  end
 end

@@ -7,7 +7,10 @@ class CharactersController < ApplicationController
   end
 
   def create
-    @character = Character.create(character_params.merge(user: current_user))
+    @character = Character.new(character_params.merge(user: current_user))
+    authorize @character
+    @character.save
+
     redirect_to user_characters_url(current_user)
   end
 
@@ -17,8 +20,10 @@ class CharactersController < ApplicationController
   end
 
   def destroy
+    authorize @character
     @character.destroy
-    redirect_to :back
+
+    redirect_to user_characters_url(current_user)
   end
 
   private
