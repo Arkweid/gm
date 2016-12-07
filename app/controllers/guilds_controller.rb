@@ -21,12 +21,14 @@ class GuildsController < ApplicationController
   end
 
   def update
+    authorize @guild
     @guild.update(guild_params)
 
     redirect_to action: :index
   end
 
   def destroy
+    authorize @guild
     @guild.destroy
 
     redirect_to action: :index

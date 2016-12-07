@@ -1,5 +1,5 @@
 class CharactersController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
   before_action :load_character, only: [:update, :destroy, :edit]
 
   def index
@@ -14,7 +14,12 @@ class CharactersController < ApplicationController
     redirect_to user_characters_url(current_user)
   end
 
+  def edit
+    authorize @character
+  end
+
   def update
+    authorize @character
     @character.update(character_params)
     redirect_to user_characters_url(current_user), notice: 'Characer updated'
   end

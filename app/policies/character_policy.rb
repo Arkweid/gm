@@ -1,7 +1,14 @@
 class CharacterPolicy < ApplicationPolicy
+  def edit?
+    destroy?
+  end
+
+  def update?
+    destroy?
+  end
 
   def create?
-    user.id == record.user_id
+    user.owner_of?(record)
   end
 
   def destroy?
