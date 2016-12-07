@@ -10,4 +10,5 @@ table.table
       th= invite.character.name
       th= invite.guild.title
       th= invite.state
-      th= link_to 'Reject', reject_user_invite_path(invite, user_id: current_user), method: :post, class: 'btn btn-danger', data: { confirm: 'Are you sure?'}
+      - unless invite.rejection?
+        th= link_to 'Reject', reject_user_invite_path(invite, user_id: current_user), method: :post, class: 'btn btn-danger', data: { confirm: 'Are you sure?'}

@@ -1,6 +1,6 @@
 class InvitesController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_invite, only: [:destroy]
+  before_action :load_invite, only: [:destroy, :reject]
 
   def index
     #policy only for youself
