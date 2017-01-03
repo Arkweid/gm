@@ -1,13 +1,15 @@
 .row
-  - current_user.characters.each do |char|
+  - @characters.each do |char|
     .col-xs-12.col-md-3
-      div.panel.panel-default
+      .panel.panel-default
         .panel-heading
           = char.name
         .panel-body
+          = image_tag char.take_avatar_link, size: "100x100", class: 'center-block'          
+        .panel-body
           ul
             li= char.game.title
-            li= char.guild_title
+            li= char.take_guild_title
           hr
           = link_to 'Edit', edit_user_character_path(char, user_id: current_user), class: 'btn btn-primary', data: { char_id: char.id }
           | &nbsp;
@@ -15,7 +17,7 @@
   
   .col-xs-12.col-md-3
     = link_to new_user_character_url(current_user) do
-      div.panel.panel-default
+      .panel.panel-default
         .panel-heading
           | New character
         .panel-body

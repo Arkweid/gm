@@ -3,7 +3,7 @@ class CreateInvites < ActiveRecord::Migration[5.0]
     create_table :invites do |t|
       t.belongs_to :character, foreign_key: true, index: true
       t.belongs_to :guild, foreign_key: true, index: true
-      t.string :state, default: 'suspense'
+      t.string :state
 
       t.text :description, default: ''
 

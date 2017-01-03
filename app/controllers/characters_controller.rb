@@ -1,22 +1,34 @@
 class CharactersController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
   before_action :load_character, only: [:update, :destroy, :edit]
 
-  respond_to :js
+  def index
+    @characters = current_user.characters.decorate
+  end
 
   def create
-    @character = Character.create(character_params.merge(user: current_user))
+    @character = Character.new(character_params.merge(user: current_user))
+    authorize @character
+    @character.save
+
     redirect_to user_characters_url(current_user)
   end
 
+  def edit
+    authorize @character
+  end
+
   def update
+    authorize @character
     @character.update(character_params)
     redirect_to user_characters_url(current_user), notice: 'Characer updated'
   end
 
   def destroy
+    authorize @character
     @character.destroy
-    redirect_to :back
+
+    redirect_to user_characters_url(current_user)
   end
 
   private

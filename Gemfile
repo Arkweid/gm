@@ -13,12 +13,13 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'pg'
 gem 'devise'
-gem "pundit"
-gem 'state_machine'
+gem 'pundit'
+gem 'state_machines-activerecord'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise-bootstrap-views'
 gem 'slim-rails'
+gem 'drape', '~> 1.0.0.beta1' #draper fork
 
 group :development, :test do
   gem 'rspec-rails'
@@ -33,6 +34,10 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  gem 'pundit-matchers', '~> 1.1.0'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

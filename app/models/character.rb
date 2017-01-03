@@ -5,8 +5,4 @@ class Character < ApplicationRecord
   has_many :invites
 
   validates :user_id, :game_id, :name, presence: true
-
-  def guild_title
-    guild ? guild.title : 'Character doesn`t have guild'
-  end
 end

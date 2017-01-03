@@ -1,9 +1,0 @@
-<% if @character.errors.present? %>
-  <% @character.errors.full_messages.each do |message| %>
-    $('.new_character_errors').html('<%= j message %>');
-  <% end %>
-<% else %>
-  $('.character_new').html('<%= j render partial: 'characters/new' %>');
-  $('.character_index').html('<%= j render partial: 'characters/index' %>');  
-<% end %>
-//must be as append exemplar, not render all

@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   get '/search', to: 'search#index'
 
   resources :users do
-    resources :characters do
-      resources :invites
-    end
-
+    resources :characters
     resources :guilds
+    resources :invites do
+      post 'reject', on: :member
+    end
   end
 end

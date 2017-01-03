@@ -1,8 +1,4 @@
-class GuildPolicy < ApplicationPolicy
-  def new?
-    create?
-  end
-
+class CharacterPolicy < ApplicationPolicy
   def edit?
     destroy?
   end
@@ -12,7 +8,7 @@ class GuildPolicy < ApplicationPolicy
   end
 
   def create?
-    user.premium? || user.guilds.blank?
+    user.owner_of?(record)
   end
 
   def destroy?
