@@ -1,0 +1,70 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta content="IE=edge" http-equiv="X-UA-Compatible"
+    meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"
+    = csrf_meta_tags
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    title Jumbotron Template for Bootstrap
+    /! Bootstrap core CSS
+    /! Custom styles for this template
+    link href="jumbotron.css" rel="stylesheet" /
+  body
+    nav.navbar.navbar-inverse.navbar
+      .container
+        /! Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle.collapsed aria-expanded="false" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" 
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand href="#"  Brand
+        /! Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.active
+              = link_to root_path 
+                | Home
+                span.sr-only (current)
+            li
+              = link_to search_path  
+                | Search
+            li.dropdown
+              a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
+                | Dropdown
+                span.caret
+              ul.dropdown-menu
+                li
+                  = link_to 'Page', 'javascript:void(0)'
+          ul.nav.navbar-nav.navbar-right
+            - if current_user
+              = render partial: 'shared/current_user_menu'
+            - else
+              .navbar-form
+                = link_to 'Log in', new_user_session_path, class: 'btn btn-success'
+                | &nbsp;
+                = link_to 'Sign up', new_user_registration_path, class: 'btn btn-success'
+
+
+    .container
+      = render partial: 'guild_panel/shared/side_menu'
+      = yield
+      hr/
+      footer
+        p &copy; Company 2016
+    /! /container
+    /!
+      | Bootstrap core JavaScript
+      | \==================================================
+    /! Placed at the end of the document so the pages load faster
+    script crossorigin="anonymous" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"
+    javascript:
+      | window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
+    script crossorigin="anonymous" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"
+    script src="../../dist/js/bootstrap.min.js"
+    /! IE10 viewport hack for Surface/desktop Windows 8 bug
+    script src="../../assets/js/ie10-viewport-bug-workaround.js"

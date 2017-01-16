@@ -23,7 +23,7 @@ gem 'drape', '~> 1.0.0.beta1' #draper fork
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'factory_girl_rails'  
+  gem 'factory_girl_rails'
   gem 'fuubar'
   gem 'byebug', platform: :mri
   gem 'faker'

@@ -1,0 +1,7 @@
+.col-md-3 role="complementary" 
+  nav.bs-docs-sidebar.hidden-print.hidden-sm.hidden-xs.affix-top
+    ul.nav.bs-docs-sidenav
+      li
+        = link_to 'News', guild_panel_news_index_path(guild_id: @guild.id)
+      li
+        = link_to 'Characters', guild_panel_characters_path(guild_id: @guild.id)

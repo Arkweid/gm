@@ -1,6 +1,16 @@
 class GuildPolicy < ApplicationPolicy
+
+  def show
+    return true if record.user == user
+    record.visible
+  end
+
   def new?
     create?
+  end
+
+  def create?
+    user.premium? || user.guilds.blank?
   end
 
   def edit?
@@ -9,10 +19,6 @@ class GuildPolicy < ApplicationPolicy
 
   def update?
     destroy?
-  end
-
-  def create?
-    user.premium? || user.guilds.blank?
   end
 
   def destroy?

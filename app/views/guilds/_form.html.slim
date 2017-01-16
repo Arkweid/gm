@@ -11,7 +11,7 @@
     .form-group
         = f.label :description, class: 'col-sm-2 control-label'
         .col-sm-10
-          = f.text_field :description, class: 'form-control'
+          = f.text_area :description, class: 'form-control'
     .form-group
         = f.label 'Emblem url', class: 'col-sm-2 control-label'
         .col-sm-10
@@ -19,4 +19,4 @@
 
     .form-group
       .col-sm-offset-2.col-sm-10
-        = f.submit 'Update', class: 'btn btn-success'
+        = f.submit @guild.new_record? ? 'Continue' : 'Update', class: 'btn btn-success'

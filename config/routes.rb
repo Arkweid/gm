@@ -11,4 +11,12 @@ Rails.application.routes.draw do
       post 'reject', on: :member
     end
   end
+
+  namespace :guild_panel do
+    resource :administration, only: :show
+    resource :guild
+    resources :news
+    resources :characters, only: [:index, :show]
+    resources :character_privelegies
+  end
 end

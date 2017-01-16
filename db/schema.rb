@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117080412) do
+ActiveRecord::Schema.define(version: 20170115144506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20161117080412) do
     t.index ["character_id", "user_id"], name: "index_character_notes_on_character_id_and_user_id", using: :btree
     t.index ["character_id"], name: "index_character_notes_on_character_id", using: :btree
     t.index ["user_id"], name: "index_character_notes_on_user_id", using: :btree
+  end
+
+  create_table "character_privileges", force: :cascade do |t|
+    t.integer  "character_id",                 null: false
+    t.string   "granted_modules", default: [],              array: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["character_id"], name: "index_character_privileges_on_character_id", using: :btree
   end
 
   create_table "characters", force: :cascade do |t|
@@ -57,6 +65,7 @@ ActiveRecord::Schema.define(version: 20161117080412) do
     t.datetime "updated_at",               null: false
     t.text     "description", default: ""
     t.text     "emblem_link", default: ""
+    t.boolean  "visible"
     t.index ["game_id"], name: "index_guilds_on_game_id", using: :btree
     t.index ["title"], name: "index_guilds_on_title", using: :btree
     t.index ["user_id"], name: "index_guilds_on_user_id", using: :btree
@@ -65,12 +74,24 @@ ActiveRecord::Schema.define(version: 20161117080412) do
   create_table "invites", force: :cascade do |t|
     t.integer  "character_id"
     t.integer  "guild_id"
-    t.string   "state"
+    t.string   "state",        default: "suspense"
     t.text     "description",  default: ""
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.index ["character_id"], name: "index_invites_on_character_id", using: :btree
     t.index ["guild_id"], name: "index_invites_on_guild_id", using: :btree
+  end
+
+  create_table "news", force: :cascade do |t|
+    t.integer  "author_id",                     null: false
+    t.integer  "guild_id",                      null: false
+    t.string   "title",                         null: false
+    t.text     "short_content"
+    t.text     "content"
+    t.boolean  "published",     default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["guild_id"], name: "index_news_on_guild_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
