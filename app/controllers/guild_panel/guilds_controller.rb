@@ -1,4 +1,5 @@
 class GuildPanel::GuildsController < ApplicationController
+  before_action :authenticate_user!
   before_action :load_guild
 
   def update

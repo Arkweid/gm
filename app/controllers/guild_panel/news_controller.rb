@@ -1,4 +1,6 @@
 class GuildPanel::NewsController < ApplicationController
+  before_action :authenticate_user!
+
   layout 'guild_panel'
 
   before_action :load_guild
@@ -8,7 +10,7 @@ class GuildPanel::NewsController < ApplicationController
   end
 
   def create
-    news_param_with_credentials = news_params.merge({ author_id: current_user, guild_id: @guild.id })
+    news_param_with_credentials = news_params.merge(author_id: current_user, guild_id: @guild.id)
     @news = News.create(news_param_with_credentials)
   end
 

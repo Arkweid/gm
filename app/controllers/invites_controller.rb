@@ -1,6 +1,7 @@
 class InvitesController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_invite, only: [:destroy, :reject]
+  before_action :load_invite, only: [:destroy, :reject, :accepted]
+  before_action :load_character, only: [:accepted]
 
   def index
     # policy only for youself
@@ -24,6 +25,13 @@ class InvitesController < ApplicationController
     redirect_to action: :index
   end
 
+  def accepted
+    # not verified
+    @invite.accepted
+
+    @character.enroll_in_guild(@invite)
+  end
+
   def reject
     # policy only for youself
     @invite.rejection
@@ -39,5 +47,9 @@ class InvitesController < ApplicationController
 
   def load_invite
     @invite = Invite.find(params[:id])
+  end
+
+  def load_character
+    @character = Character.find(@invite.character_id)
   end
 end

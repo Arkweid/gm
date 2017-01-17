@@ -11,4 +11,4 @@ table.table
       th= invite.guild.title
       th= invite.state
       - unless invite.rejection?
-        th= link_to 'Reject', reject_user_invite_path(invite, user_id: current_user), method: :post, class: 'btn btn-danger', data: { confirm: 'Are you sure?'}
+        th= link_to 'Reject', reject_user_invite_path(invite, user_id: current_user), method: :patch, class: 'btn btn-danger', data: { confirm: 'Are you sure?'}

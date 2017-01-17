@@ -12,4 +12,6 @@
         hr
         = link_to 'Edit', edit_user_guild_path(guild, user_id: current_user), class: 'btn btn-primary'
         | &nbsp;
+        = link_to 'Guild Panel', guild_panel_news_index_path(guild_id: guild.id), class: 'btn btn-primary'
+        | &nbsp;        
         = link_to 'Delete', user_guild_path(guild, user_id: current_user), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?'}

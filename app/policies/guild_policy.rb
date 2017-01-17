@@ -1,5 +1,4 @@
 class GuildPolicy < ApplicationPolicy
-
   def show
     return true if record.user == user
     record.visible

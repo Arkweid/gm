@@ -17,7 +17,7 @@ class GuildsController < ApplicationController
     authorize @guild
     @guild.save
 
-    redirect_to guild_panel_news_path(guild_id: @guild.id)
+    redirect_to guild_panel_news_index_path(guild_id: @guild.id)
   end
 
   def update

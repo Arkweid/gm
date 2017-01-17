@@ -6,9 +6,12 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :characters
+      patch 'grant_privilege', on: :member
+      delete 'remove_privilege', on: :member    
     resources :guilds
     resources :invites do
-      post 'reject', on: :member
+      patch 'reject', on: :member
+      patch 'accepted', on: :member
     end
   end
 

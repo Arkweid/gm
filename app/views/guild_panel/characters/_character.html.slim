@@ -1,1 +1,17 @@
-= character.name
+.row
+  .panel.panel-default
+    .panel-heading
+      = character.name
+    .panel-body
+      = image_tag character.take_avatar_link, size: "100x100", class: 'center-block'
+    .panel-body
+      = link_to 'Newsmaker', '', class: 'btn btn-primary'
+      | &nbsp;
+      = link_to 'Recruter', '', class: 'btn btn-primary'
+      | &nbsp;
+      = link_to 'Designer', '', class: 'btn btn-primary'
+      | &nbsp;
+      = link_to 'Officer', '', class: 'btn btn-primary'
+      | &nbsp;
+      = link_to 'Right hand', '', class: 'btn btn-primary'
+      | &nbsp;
