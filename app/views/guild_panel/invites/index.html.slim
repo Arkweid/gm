@@ -1,0 +1,14 @@
+.col-md-9
+  table.table
+    tr
+      th Character
+      th Status
+      th
+
+    - @invites.each do |invite|
+      tr
+        th= invite.character.name
+        th= invite.state
+        th= link_to 'Approval', approval_guild_panel_invite_path(invite, user_id: current_user), method: :patch, class: 'btn btn-primary', data: { confirm: 'Are you sure?'}
+        th= link_to 'Accepted', accepted_guild_panel_invite_path(invite, user_id: current_user), method: :patch, class: 'btn btn-primary', data: { confirm: 'Are you sure?'}
+        th= link_to 'Accepted', reject_guild_panel_invite_path(invite, user_id: current_user), method: :patch, class: 'btn btn-danger', data: { confirm: 'Are you sure?'}

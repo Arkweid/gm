@@ -5,13 +5,15 @@
     .panel-body
       = image_tag character.take_avatar_link, size: "100x100", class: 'center-block'
     .panel-body
-      = link_to 'Newsmaker', '', class: 'btn btn-primary'
+      = link_to 'Newsmaker', grant_privilege_guild_panel_character_path(id: character.id, granted_module: 'Newsmaker'), method: :patch, class: 'btn btn-primary'
       | &nbsp;
-      = link_to 'Recruter', '', class: 'btn btn-primary'
+      = link_to 'Recruter', grant_privilege_guild_panel_character_path(id: character.id, granted_module: 'Recruter'), method: :patch, class: 'btn btn-primary'
       | &nbsp;
-      = link_to 'Designer', '', class: 'btn btn-primary'
+      = link_to 'Designer', grant_privilege_guild_panel_character_path(id: character.id, granted_module: 'Designer'), method: :patch, class: 'btn btn-primary'
       | &nbsp;
-      = link_to 'Officer', '', class: 'btn btn-primary'
+      = link_to 'Officer', grant_privilege_guild_panel_character_path(id: character.id, granted_module: 'Officer'), method: :patch, class: 'btn btn-primary'
       | &nbsp;
-      = link_to 'Right hand', '', class: 'btn btn-primary'
+      = link_to 'Right hand', grant_privilege_guild_panel_character_path(id: character.id, granted_module: 'Right hand'), method: :patch, class: 'btn btn-primary'
+      | &nbsp;
+      = link_to 'Kick', kick_guild_panel_character_path(character), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?'}
       | &nbsp;

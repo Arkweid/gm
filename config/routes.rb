@@ -6,12 +6,9 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :characters
-      patch 'grant_privilege', on: :member
-      delete 'remove_privilege', on: :member    
     resources :guilds
     resources :invites do
       patch 'reject', on: :member
-      patch 'accepted', on: :member
     end
   end
 
@@ -19,7 +16,15 @@ Rails.application.routes.draw do
     resource :administration, only: :show
     resource :guild
     resources :news
-    resources :characters, only: [:index, :show]
-    resources :character_privelegies
+    resources :characters, only: [:index] do
+      patch 'grant_privilege', on: :member
+      patch 'remove_privilege', on: :member
+      delete 'kick', on: :member
+    end
+    resources :invites, only: [:index] do
+      patch 'approval', on: :member
+      patch 'reject', on: :member
+      patch 'accepted', on: :member
+    end
   end
 end

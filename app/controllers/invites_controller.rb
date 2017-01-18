@@ -25,13 +25,6 @@ class InvitesController < ApplicationController
     redirect_to action: :index
   end
 
-  def accepted
-    # not verified
-    @invite.accepted
-
-    @character.enroll_in_guild(@invite)
-  end
-
   def reject
     # policy only for youself
     @invite.rejection

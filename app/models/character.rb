@@ -13,9 +13,19 @@ class Character < ApplicationRecord
     grant_default_privileges(invite)
   end
 
+  # not verified
+  def kick
+    update_attributes(guild_id: nil)
+    delete_character_privileges_row
+  end
+
   private
 
   def grant_default_privileges(invite)
     CharacterPrivilege.create(character_id: invite.character_id)
+  end
+
+  def delete_character_privileges_row
+    CharacterPrivilege.find_by(character_id: id).destroy
   end
 end
