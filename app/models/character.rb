@@ -7,16 +7,26 @@ class Character < ApplicationRecord
 
   validates :user_id, :game_id, :name, presence: true
 
-  # not verified
   def enroll_in_guild(invite)
     update_attributes(guild_id: invite.guild_id)
     grant_default_privileges(invite)
   end
 
-  # not verified
   def kick
-    update_attributes(guild_id: nil)
+    update_attributes(guild_id: nil, guild_rank: 0)
     delete_character_privileges_row
+  end
+
+  def up_rank
+    return false if self.guild_rank >= 20
+
+    update_attributes(guild_rank: self.guild_rank + 1)
+  end
+
+  def down_rank
+    return false if self.guild_rank.zero?
+
+    update_attributes(guild_rank: self.guild_rank - 1)
   end
 
   private

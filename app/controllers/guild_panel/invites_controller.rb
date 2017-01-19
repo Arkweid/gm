@@ -14,7 +14,6 @@ class GuildPanel::InvitesController < ApplicationController
   end
 
   def accepted
-    # not verified
     @invite.accepted
 
     @character.enroll_in_guild(@invite)
@@ -34,3 +33,4 @@ class GuildPanel::InvitesController < ApplicationController
     @invites = Invite.where(guild_id: @guild.id)
   end
 end
+1

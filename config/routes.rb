@@ -20,6 +20,8 @@ Rails.application.routes.draw do
       patch 'grant_privilege', on: :member
       patch 'remove_privilege', on: :member
       delete 'kick', on: :member
+      patch 'up_rank', on: :member
+      patch 'down_rank', on: :member
     end
     resources :invites, only: [:index] do
       patch 'approval', on: :member

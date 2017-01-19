@@ -4,7 +4,7 @@ class GuildPanel::CharactersController < ApplicationController
   layout 'guild_panel'
 
   before_action :load_guild, only: [:index]
-  before_action :load_character, only: [:kick]
+  before_action :load_character, only: [:kick, :up_rank, :down_rank]
   before_action :load_char_privileges, only: [:grant_privilege, :remove_privilege]
 
   def index
@@ -25,6 +25,16 @@ class GuildPanel::CharactersController < ApplicationController
   def kick
     # authorize
     @character.kick
+  end
+
+  def up_rank
+    # authorize
+    @character.up_rank
+  end
+
+  def down_rank
+    # authorize
+    @character.down_rank    
   end
 
   private
