@@ -18,15 +18,15 @@ class Character < ApplicationRecord
   end
 
   def up_rank
-    return false if self.guild_rank >= 20
+    return false if guild_rank >= 20
 
-    update_attributes(guild_rank: self.guild_rank + 1)
+    update_attributes(guild_rank: guild_rank + 1)
   end
 
   def down_rank
-    return false if self.guild_rank.zero?
+    return false if guild_rank.zero?
 
-    update_attributes(guild_rank: self.guild_rank - 1)
+    update_attributes(guild_rank: guild_rank - 1)
   end
 
   private

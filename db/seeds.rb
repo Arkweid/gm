@@ -1,7 +1,9 @@
-User.destroy_all
-Game.destroy_all
+CharacterPrivilege.destroy_all
+Invite.destroy_all
 Character.destroy_all
 Guild.destroy_all
+User.destroy_all
+Game.destroy_all
 
 game_data = ['Albion Online', 'World of Warcraft', 'Lineage II', 'Archeage', 'Black Desert Online']
 game_data = game_data.reduce([]) { |arr, title| arr << { title: title }; arr }
@@ -49,7 +51,37 @@ def character_data
   res
 end
 
+def character_privilege_data
+  res = []
+  character_ids = Character.pluck(:id)
+  allowed_privileges = ['Newsmaker', 'Officer', 'Designer', 'Recruter']
+  character_ids.each do |char_id|
+    res << {
+      character_id: char_id,
+      granted_modules: [allowed_privileges.sample],
+    }
+  end
+  res
+end
+
+def invite_data
+  res = []
+  character_ids = Character.pluck(:id)
+  guild_ids = Guild.pluck(:id)
+  200.times do
+    res << {
+      state: 'suspense',
+      description: Faker::Hipster.paragraphs(2),
+      character_id: character_ids.sample,
+      guild_id: guild_ids.sample
+    }
+  end
+  res
+end
+
 Game.create(game_data)
 User.create(user_data)
 Guild.create(guild_data)
 Character.create(character_data)
+CharacterPrivilege.create(character_privilege_data)
+Invite.create(invite_data)

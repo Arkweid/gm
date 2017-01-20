@@ -1,0 +1,43 @@
+- if privileges.include?('Newsmaker')
+  = link_to 'Remove Newsmaker', remove_privilege_guild_panel_character_path(id: character.id, granted_module: 'Newsmaker'), method: :patch, class: 'btn btn-danger'
+- else
+  = link_to 'Newsmaker', grant_privilege_guild_panel_character_path(id: character.id, granted_module: 'Newsmaker'), method: :patch, class: 'btn btn-primary'
+| &nbsp;
+
+
+- if privileges.include?('Recruter')
+  = link_to 'Remove Recruter', remove_privilege_guild_panel_character_path(id: character.id, granted_module: 'Recruter'), method: :patch, class: 'btn btn-danger'
+- else
+  = link_to 'Recruter', grant_privilege_guild_panel_character_path(id: character.id, granted_module: 'Recruter'), method: :patch, class: 'btn btn-primary'
+| &nbsp;
+
+
+- if privileges.include?('Designer')
+  = link_to 'Remove Designer', remove_privilege_guild_panel_character_path(id: character.id, granted_module: 'Designer'), method: :patch, class: 'btn btn-danger'
+- else
+  = link_to 'Designer', grant_privilege_guild_panel_character_path(id: character.id, granted_module: 'Designer'), method: :patch, class: 'btn btn-primary'
+| &nbsp;
+
+
+- if privileges.include?('Officer')
+  = link_to 'Remove Officer', remove_privilege_guild_panel_character_path(id: character.id, granted_module: 'Officer'), method: :patch, class: 'btn btn-danger'
+- else
+  = link_to 'Officer', grant_privilege_guild_panel_character_path(id: character.id, granted_module: 'Officer'), method: :patch, class: 'btn btn-primary'
+| &nbsp;
+
+
+- if privileges.include?('Right hand')
+  = link_to 'Remove Right hand', remove_privilege_guild_panel_character_path(id: character.id, granted_module: 'Right hand'), method: :patch, class: 'btn btn-danger'
+- else
+  = link_to 'Right hand', grant_privilege_guild_panel_character_path(id: character.id, granted_module: 'Right hand'), method: :patch, class: 'btn btn-primary'
+| &nbsp;
+
+
+= link_to 'Kick', kick_guild_panel_character_path(character), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?'}
+| &nbsp;
+
+
+
+
+
+

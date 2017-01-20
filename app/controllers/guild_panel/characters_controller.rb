@@ -15,26 +15,36 @@ class GuildPanel::CharactersController < ApplicationController
   def grant_privilege
     # authorize
     @char_privileges.grant_privilege(params['granted_module'])
+
+    redirect_to :back
   end
 
   def remove_privilege
     # authorize
     @char_privileges.remove_privilege(params['granted_module'])
+
+    redirect_to :back
   end
 
   def kick
     # authorize
     @character.kick
+
+    redirect_to :back
   end
 
   def up_rank
     # authorize
     @character.up_rank
+
+    redirect_to :back
   end
 
   def down_rank
     # authorize
-    @character.down_rank    
+    @character.down_rank
+
+    redirect_to :back
   end
 
   private

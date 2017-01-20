@@ -6,23 +6,13 @@ form.form-horizontal.panel.panel-default
     .col-sm-10
       h4
         strong
-          p.form-control-static 
+          p.form-control-static
             = character.name
   .form-group
     label.col-sm-2.control-label Rights
     .col-sm-10
-      = link_to 'Newsmaker', grant_privilege_guild_panel_character_path(id: character.id, granted_module: 'Newsmaker'), method: :patch, class: 'btn btn-primary'
-      | &nbsp;
-      = link_to 'Recruter', grant_privilege_guild_panel_character_path(id: character.id, granted_module: 'Recruter'), method: :patch, class: 'btn btn-primary'
-      | &nbsp;
-      = link_to 'Designer', grant_privilege_guild_panel_character_path(id: character.id, granted_module: 'Designer'), method: :patch, class: 'btn btn-primary'
-      | &nbsp;
-      = link_to 'Officer', grant_privilege_guild_panel_character_path(id: character.id, granted_module: 'Officer'), method: :patch, class: 'btn btn-primary'
-      | &nbsp;
-      = link_to 'Right hand', grant_privilege_guild_panel_character_path(id: character.id, granted_module: 'Right hand'), method: :patch, class: 'btn btn-primary'
-      | &nbsp;
-      = link_to 'Kick', kick_guild_panel_character_path(character), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?'}
-      | &nbsp;
+      = render partial: 'privilege_links', locals: { character: character, privileges: character.character_privilege.granted_modules }
+
   .form-group
     label.col-sm-2.control-label Rank
     .col-sm-10
