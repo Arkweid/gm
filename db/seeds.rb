@@ -68,7 +68,7 @@ def invite_data
   res = []
   character_ids = Character.pluck(:id)
   guild_ids = Guild.pluck(:id)
-  200.times do
+  50.times do
     res << {
       state: 'suspense',
       description: Faker::Hipster.paragraphs(2),

@@ -4,23 +4,30 @@ class GuildPanel::InvitesController < ApplicationController
   layout 'guild_panel'
 
   before_action :load_guild, only: [:index]
-  before_action :load_invites, only: [:index, :approval, :accepted, :reject]
+  before_action :load_invites, only: [:index]
+  before_action :load_invite, only: [:approval, :accepted, :reject]
+
 
   def index
   end
 
   def approval
-    @invite.accepted
+    @invite.approval
+
+    redirect_to :back
   end
 
   def accepted
     @invite.accepted
+    @invite.character.enroll_in_guild(@invite)
 
-    @character.enroll_in_guild(@invite)
+    redirect_to :back
   end
 
   def reject
     @invite.reject
+
+    redirect_to :back
   end
 
   private
@@ -30,7 +37,10 @@ class GuildPanel::InvitesController < ApplicationController
   end
 
   def load_invites
-    @invites = Invite.where(guild_id: @guild.id)
+    @invites = @guild.invites
+  end
+
+  def load_invite
+    @invite = Invite.find(params[:id])
   end
 end
-1
