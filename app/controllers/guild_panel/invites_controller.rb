@@ -7,7 +7,6 @@ class GuildPanel::InvitesController < ApplicationController
   before_action :load_invites, only: [:index]
   before_action :load_invite, only: [:approval, :accepted, :reject]
 
-
   def index
   end
 

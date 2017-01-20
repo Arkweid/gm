@@ -16,6 +16,9 @@ gem 'devise'
 gem 'pundit'
 gem 'state_machines-activerecord'
 
+#maintain repo is not updated for rails5
+gem 'acts_as_commentable', git: 'https://github.com/ingedmundo/acts_as_commentable.git'
+
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise-bootstrap-views'
 gem 'slim-rails'
