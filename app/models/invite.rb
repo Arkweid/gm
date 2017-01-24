@@ -1,6 +1,4 @@
 class Invite < ApplicationRecord
-  acts_as_commentable :public, :private
-  
   belongs_to :character
   belongs_to :guild
 
