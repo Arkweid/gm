@@ -1,4 +1,6 @@
 class Invite < ApplicationRecord
+  include Commentable
+
   belongs_to :character
   belongs_to :guild
 
